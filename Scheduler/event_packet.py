@@ -137,9 +137,10 @@ class EventPacket():
         if not(isinstance(rhs, EventPacket)):
             raise ValueError(f'Cannot compare EventPacket to {type(rhs)}')
 
-        return False
-
-        # return all(operator.lt, zip((self.begin, self.end), (rhs.begin, rhs.end)))
+        return (
+            self.begin < rhs.begin and
+            self.end < self.end
+        )
 
     def prettify(self, time_object: datetime.datetime) -> str:
         """
